@@ -1,6 +1,6 @@
 
 public class Movie {
-
+    // read
 	private String name;
     private int id;
     
