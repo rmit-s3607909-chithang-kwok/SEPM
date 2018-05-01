@@ -1,8 +1,12 @@
+import java.util.ArrayList;
 
 public class Cinema{
 
 	public Cinema() {
-		// TODO Auto-generated constructor stub
+		String location;
+		String id;
+		
+		ArrayList movieSessions = new ArrayList();
 	}
 
 }

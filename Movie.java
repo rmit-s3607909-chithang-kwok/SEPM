@@ -1,8 +1,8 @@
 
-public class Movie {
+public abstract class Movie {
     // read
 	private String name;
-    private int id;
+    private String id;
     
     
     public void Movie(String name, int id) {
