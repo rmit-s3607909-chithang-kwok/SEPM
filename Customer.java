@@ -8,7 +8,7 @@ public class Customer{
 		String email;
 		String suburb;
 		
-		ArrayList bookings = new ArrayList();
+		ArrayList<Booking> bookings = new ArrayList<Booking>();
 	}
 
 }
