@@ -1,17 +1,24 @@
+import java.util.ArrayList;
 
-public class Customer{
-
-	public Customer() {
-<<<<<<< HEAD
-		String name;
-		String id;
-		String email;
-		String suburb;
-		
-		ArrayList<Booking> bookings = new ArrayList<Booking>();
-=======
-		// TODO Auto-generated constructor stub
->>>>>>> 9c9c642b56c3b9bc9dcfa2a39eee344b78979cf8
+public class Customer
+{
+	
+	String name;
+	String id;
+	String email;
+	String suburb;
+	
+	ArrayList<Booking> bookings = new ArrayList<Booking>();
+	
+	public Customer(String name, String id, String email, String suburb)
+	{
+		this.name = name;
+		this.id = id;
+		this.email = email;
+		this.suburb = suburb;
 	}
-
+		
+	
 }
+
+

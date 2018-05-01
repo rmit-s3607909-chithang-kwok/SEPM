@@ -5,7 +5,7 @@ public abstract class Movie {
     private String id;
     
     
-    public void Movie(String name, int id) {
+    public Movie(String name, String id) {
     	this.name = name;
     	this.id = id;
     }

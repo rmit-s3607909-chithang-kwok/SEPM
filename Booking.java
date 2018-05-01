@@ -1,10 +1,14 @@
 
 public class Booking{
+	
+	String id;
+	Customer customer;	
 
-	public Booking() 
+	
+	public Booking(String id, Customer customer) 
 	{
-		String id;
-		Customer customer;	
+		this.id = id;
+		this.customer = customer;
 	}
 
 }
