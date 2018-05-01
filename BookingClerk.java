@@ -1,8 +1,13 @@
 
 public class BookingClerk {
-
+	private String username;
+	private String password;
+	private String id;
+	
 	public BookingClerk() {
-		// TODO Auto-generated constructor stub
+		this.username=username;
+		this.password=password;
+		this.id=id;
 	}
 
 }
