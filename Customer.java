@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 
 public class Customer
@@ -17,8 +18,10 @@ public class Customer
 		this.email = email;
 		this.suburb = suburb;
 	}
-		
+	
+	public String getID()
+	{
+		return id;
+	}
 	
 }
-
-
