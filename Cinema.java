@@ -21,7 +21,7 @@ public class Cinema{
 	{
 		for(int i=0; i<movieSessions.size(); i++) 
 		{
-			System.out.println(movieSessions.get(i).getid());
+			System.out.println(movieSessions.get(i).getid() + movieSessions.get(i).getdate());
 		}
 	}
 	
