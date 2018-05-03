@@ -9,7 +9,7 @@ public class Customer
 	String email;
 	String suburb;
 	
-	ArrayList<Booking> bookings = new ArrayList<Booking>();
+	//ArrayList<Booking> bookings = new ArrayList<Booking>();
 	
 	public Customer(String name, String id, String email, String suburb)
 	{

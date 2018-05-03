@@ -1,23 +1,30 @@
 import java.util.ArrayList;
 
 public class Cinema{
-	private String Location;
-	private int id;
-	ArrayList<Session> Session = new ArrayList<Session>();
+	private String location;
+	//private int id;
+	ArrayList<Movie> movies = new ArrayList<Movie>();
+	ArrayList<Session> cinemaSessions = new ArrayList<Session>();
 	
 	
-<<<<<<< HEAD
-	public void listSessions()
+
+	public void listSessions(String match)
 	{
-		for(int i=0; i<movieSessions.size(); i++) 
+		for(int i=0; i<cinemaSessions.size(); i++) 
 		{
-			System.out.println(movieSessions.get(i).getid() + movieSessions.get(i).getdate());
+			//System.out.println(cinemaSessions.get(i).getid() + cinemaSessions.get(i).getdate());
+			
 		}
-=======
-	public Cinema() {
-		this.Location=Location;
-		this.id=id;
->>>>>>> a6450d0cefb3d6eca5d1ed2595902a73c4db5924
+
+	public Cinema(String location) 
+	{
+		this.location=location;
+		//this.id=id;
+	}
+	
+	public String getLocation()
+	{
+		return location;
 	}
 
 }
