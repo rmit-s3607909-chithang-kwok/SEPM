@@ -14,6 +14,7 @@ public class Cinema
 			//System.out.println(cinemaSessions.get(i).getid() + cinemaSessions.get(i).getdate());
 			
 		}
+	}	
 */
 	public Cinema(String location) 
 	{
