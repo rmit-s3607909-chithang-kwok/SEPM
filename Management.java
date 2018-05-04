@@ -6,12 +6,12 @@ public class Management
 	 private static String username;
 	 private static String Password;
 	
-	 ArrayList<Customer> customers = new ArrayList<Customer>();
-	 ArrayList<Movie> movies = new ArrayList<Movie>();
-	 ArrayList<BookingClerk> bookingClerks = new ArrayList<BookingClerk>();
-	 ArrayList<Cinema> cinemas = new ArrayList<Cinema>();
+	 private static ArrayList<Customer> customers = new ArrayList<Customer>();
+	 //private static ArrayList<Movie> movies = new ArrayList<Movie>();
+	 //private static ArrayList<BookingClerk> bookingClerks = new ArrayList<BookingClerk>();
+	 private static ArrayList<Cinema> cinemas = new ArrayList<Cinema>();
 	
-	 Scanner sc = new Scanner(System.in);
+	 static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) 
 	{
@@ -41,7 +41,6 @@ public class Management
 			System.out.println("Enter an Option:                ");
 			
 			input = sc.nextInt();
-			System.out.println("  Your options are:  " + input);
 			
 			switch(input) 
 			{
@@ -61,7 +60,7 @@ public class Management
 		while(input!=5);
 }
 	
-	public void createBooking() 
+	public static void createBooking() 
 	{
 		Cinema cinemaSelected;
 		Movie movieSelected;
@@ -74,50 +73,22 @@ public class Management
 		customerSelected = customerSelection(sessionSelected);
 		sessionSelected.makeBooking(customerSelected);			
 	}
-	public void deleteBooking()
+	
+	public static void deleteBooking()
 	{
-		String customerID;
-		String movieID;
-		int cinemaSelection;
-		int movieSelection;
-		int sessionSelection;
 		Cinema cinemaSelected;
 		Movie movieSelected;
 		Session sessionSelected;
 		Customer customerSelected;
-		//Cinema
-		System.out.println("Please enter cinema: ");
-		for(int i = 0; i < cinemas.size(); i++)
-		{
-			System.out.println((i+1) + ". " + cinemas.get(i).getLocation());
-		}
-		cinemaSelection = sc.nextInt();
-		cinemaSelected = cinemas.get(cinemaSelection-1); 
-		//Movie
-		System.out.println("Please enter movie: ");
-		for(int i = 0; i < cinemaSelected.movies.size(); i++)
-		{
-			System.out.println((i+1) + ". " + cinemaSelected.movies.get(i).getName());
-		}
-		movieSelection=sc.nextInt();
-		movieSelected = cinemaSelected.movies.get(movieSelection-1); 
-		//Session
-		System.out.println("Please enter session: ");
-		int number = 0;
-		for(int i = 0; i < cinemaSelected.cinemaSessions.size(); i++)
-		{
-			int counter = 0;
-			if(movieSelected == cinemaSelected.cinemaSessions.get(i).movie)
-			{
-				counter ++;
-				System.out.println((counter++) + ". " + cinemaSelected.cinemaSessions.get(i).getDate());
-				number = i;
-			}
-		}
-		sessionSelection = sc.nextInt();
-		sessionSelected = cinemaSelected.cinemaSessions.get(number);
+		
+		cinemaSelected = cinemaSelection();
+		movieSelected = movieSelection(cinemaSelected);
+		sessionSelected = sessionSelection(cinemaSelected, movieSelected);
+		customerSelected = customerSelection(sessionSelected);
+		sessionSelected.deleteBooking(customerSelected);		
 	}
-	private Cinema cinemaSelection()
+	
+	private static Cinema cinemaSelection()
 	{
 		int cinemaSelection;
 		Cinema cinemaSelected;
@@ -131,7 +102,8 @@ public class Management
 		cinemaSelected = cinemas.get(cinemaSelection-1); 
 		return cinemaSelected;
 	}
-	private Movie movieSelection(Cinema cinemaSelected)
+	
+	private static Movie movieSelection(Cinema cinemaSelected)
 	{
 		//int cinemaSelection;
 		int movieSelection;
@@ -145,7 +117,8 @@ public class Management
 		movieSelected = cinemaSelected.movies.get(movieSelection-1); 
 		return movieSelected;
 	}
-	private Session sessionSelection(Cinema cinemaSelected, Movie movieSelected)
+	
+	private static Session sessionSelection(Cinema cinemaSelected, Movie movieSelected)
 	{
 		//int sessionSelection;
 		Session sessionSelected;
@@ -166,7 +139,8 @@ public class Management
 		sessionSelected = cinemaSelected.cinemaSessions.get(number);
 		return sessionSelected;
 	}
-	private Customer customerSelection(Session sessionSelected)
+	
+	private static Customer customerSelection(Session sessionSelected)
 	{
 		String customerID;
 		Customer customerSelected;
@@ -181,6 +155,6 @@ public class Management
 				return customerSelected;
 			}
 		}
-		
+		return null;
 	}
 }

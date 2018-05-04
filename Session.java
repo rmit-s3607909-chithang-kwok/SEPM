@@ -11,7 +11,6 @@ public Movie movie;
 		this.date = date;
 		this.id=id;
 		this.movie=movie;
-	     
 	}
 
 	public int getID() {
@@ -37,21 +36,16 @@ public Movie movie;
 	}
 	
 		
-	public static void deleteBooking() {
-		int input;
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Please select the Movie you want to delete?");
-		System.out.println("1. Avenger3");
-		System.out.println("2. Black Panther");
-		System.out.println("3. Rampage");
-		
-		
-		input = sc.nextInt();
-		System.out.println("Your option  are" + input);
-		System.out.println("Movie has been deleted.");
-		
+	public void deleteBooking(Customer customer) 
+	{
+		for(int i = 0; i< bookings.size(); i++)
+		{
+			if(bookings.get(i).customer == customer)
+			{
+				bookings.remove(i);
+			}
+		}
 	}
-		
 }	
 	
 
