@@ -2,26 +2,17 @@
 public class Movie {
     // read
 	private String name;
-    private int id;
+    //private int id;
     
-    
-    public void Movie(String name, int id) {
+    public Movie(String name) {
+		// TODO Auto-generated constructor stub
     	this.name = name;
-    	this.id = id;
-    }
-    
+	}
+
     public String getName()
     {
     	return name;
-    }
-    
-    
-    
-    
-    
-    
-    
-    
+    }  
 }
 
 

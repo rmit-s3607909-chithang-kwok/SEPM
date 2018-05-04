@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class Management 
 {
-	 private static String username;
-	 private static String Password;
+	 private static String userName;
+	 private static String password;
 	
 	 private static ArrayList<Customer> customers = new ArrayList<Customer>();
 	 //private static ArrayList<Movie> movies = new ArrayList<Movie>();
@@ -16,6 +16,16 @@ public class Management
 	public static void main(String[] args) 
 	{
 		int input = 0;
+		
+		Cinema lilydale = new Cinema("Lilydale");
+		cinemas.add(lilydale);
+		Movie blackPanther = new Movie("Black Panther");
+		lilydale.addMovie(blackPanther);
+		lilydale.addSession("25th February", blackPanther);
+		
+		Customer customer = new Customer("Naomi", "a", "naomi@gmail.com", "Ringwood East");
+		customers.add(customer);
+		
 		
 		//Booking[] Booking = new Booking[20];
 		//System.out.println("Please enter your username and passsword");
@@ -29,7 +39,7 @@ public class Management
 	    //}
 		
 		do 
-		{
+		{			
 			System.out.println("Welcome to the CinenoPlex Management System (JMOSS). ");
 			System.out.println("=================================");
 			System.out.println("1. Create Booking");
@@ -48,6 +58,7 @@ public class Management
 					createBooking();
 					break;
 				case 2:
+					deleteBooking();
 					break;
 				case 3:
 					break;
@@ -146,10 +157,11 @@ public class Management
 		Customer customerSelected;
 		
 		System.out.println("Please enter Customer ID: ");
+		sc.nextLine();
 		customerID = sc.nextLine();
 		for(int i = 0; i < customers.size(); i++)
 		{
-			if(customerID.equals(customers.get(i).getID()))
+			if( customerID.equals(customers.get(i).getID()) )
 			{
 				customerSelected = customers.get(i);
 				return customerSelected;

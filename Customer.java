@@ -5,9 +5,9 @@ public class Customer
 {
 	
 	String name;
-	String id;
 	String email;
 	String suburb;
+	String id;
 	
 	//ArrayList<Booking> bookings = new ArrayList<Booking>();
 	

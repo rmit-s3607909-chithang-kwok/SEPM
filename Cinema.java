@@ -1,13 +1,12 @@
 import java.util.ArrayList;
 
-public class Cinema{
+public class Cinema
+{
 	private String location;
 	//private int id;
 	ArrayList<Movie> movies = new ArrayList<Movie>();
 	ArrayList<Session> cinemaSessions = new ArrayList<Session>();
-	
-	
-
+	/*
 	public void listSessions(String match)
 	{
 		for(int i=0; i<cinemaSessions.size(); i++) 
@@ -15,7 +14,7 @@ public class Cinema{
 			//System.out.println(cinemaSessions.get(i).getid() + cinemaSessions.get(i).getdate());
 			
 		}
-
+*/
 	public Cinema(String location) 
 	{
 		this.location=location;
@@ -27,4 +26,14 @@ public class Cinema{
 		return location;
 	}
 
+	public void addSession(String date, Movie movie)
+	{
+		Session session = new Session(date, movie);
+		cinemaSessions.add(session);
+	}
+	
+	public void addMovie(Movie movie)
+	{
+		movies.add(movie);
+	}
 }
