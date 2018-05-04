@@ -7,7 +7,7 @@ public class Management
 	 private static String password;
 	
 	 private static ArrayList<Customer> customers = new ArrayList<Customer>();
-	 //private static ArrayList<Movie> movies = new ArrayList<Movie>();
+	 private static ArrayList<Movie> movies = new ArrayList<Movie>(); //need for movies search
 	 //private static ArrayList<BookingClerk> bookingClerks = new ArrayList<BookingClerk>();
 	 private static ArrayList<Cinema> cinemas = new ArrayList<Cinema>();
 	
@@ -61,6 +61,7 @@ public class Management
 					deleteBooking();
 					break;
 				case 3:
+					searchByMovie();
 					break;
 				case 4:
 					break;
@@ -168,5 +169,26 @@ public class Management
 			}
 		}
 		return null;
+	}
+	
+	private static void searchByMovie()
+	{
+		String movieSearch;
+		Movie movieSearched;
+		System.out.println("Enter movie name");
+		sc.nextLine();
+		movieSearch = sc.nextLine();         
+		
+		for(int i = 0; i < movies.size(); i++)
+		{
+			if(movieSearch == movies.get(i).getName())
+			{
+				System.out.println((i+1) + ". " + movies.get(i).getName());
+				movieSearched = movies.get(i);
+			}
+		}
+		
+		
+		
 	}
 }
