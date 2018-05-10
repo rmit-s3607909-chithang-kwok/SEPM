@@ -64,12 +64,15 @@ public class Management
 					searchByMovie();
 					break;
 				case 4:
+					searchByCinema();
 					break;
-				case 5:
-					break;
-			}
+				//case 5:
+					//break;
+			}if (input != 1 && input != 2 && input != 3 && input != 4 && input != 5);
+			System.out.println("Please enter the correct number? ");
 		}
 		while(input!=5);
+		System.out.println("Program exit");
 }
 	
 	public static void createBooking() 
@@ -83,7 +86,8 @@ public class Management
 		movieSelected = movieSelection(cinemaSelected);
 		sessionSelected = sessionSelection(cinemaSelected, movieSelected);
 		customerSelected = customerSelection(sessionSelected);
-		sessionSelected.makeBooking(customerSelected);			
+		sessionSelected.makeBooking(customerSelected);		
+		System.out.println("The following Booking have been created.");
 	}
 	
 	public static void deleteBooking()
@@ -97,7 +101,8 @@ public class Management
 		movieSelected = movieSelection(cinemaSelected);
 		sessionSelected = sessionSelection(cinemaSelected, movieSelected);
 		customerSelected = customerSelection(sessionSelected);
-		sessionSelected.deleteBooking(customerSelected);		
+		sessionSelected.deleteBooking(customerSelected);	
+		System.out.println("The following Booking have been cancelled");
 	}
 	
 	private static Cinema cinemaSelection()
@@ -174,6 +179,7 @@ public class Management
 	private static void searchByMovie()
 	{
 		String movieSearch;
+		
 		Movie movieSearched;
 		System.out.println("Enter movie name");
 		sc.nextLine();
@@ -188,7 +194,31 @@ public class Management
 			}
 		}
 		
+		System.out.println("You have choosed " + movieSearch + " to watch today.");
 		
 		
+		
+	}
+	
+	private static void searchByCinema()
+	{
+		   String CinemaSearched;
+		   int cinemainput;
+		   
+		   Scanner sa = new Scanner(System.in);
+		   
+		   System.out.println("Please enter the Cinema number you want to watch the movie?");
+		   System.out.println("1. St Kilda ");
+		   System.out.println("2. Fitzroy");
+		   System.out.println("3. Melbourne CBD");
+		   System.out.println("4. Sunshine");
+		   System.out.println("5. Lilydale");
+		   
+		   cinemainput = sa.nextInt();
+		   
+		   System.out.println("You have choose " + cinemainput + " to watch the movie today.");
+		   
+		   
+		   
 	}
 }
