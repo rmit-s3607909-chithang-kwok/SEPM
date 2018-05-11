@@ -1,12 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.*;
-
+import java.awt.*;
 public class Management 
 {
-	 //private static String userName;
-	 //private static String password;
-	
 	 private static ArrayList<Customer> customers = new ArrayList<Customer>();
 	 private static ArrayList<Movie> movies = new ArrayList<Movie>(); //need for movies search
 	 //private static ArrayList<BookingClerk> bookingClerks = new ArrayList<BookingClerk>();
@@ -71,12 +68,13 @@ public class Management
 		customers.add(customer3);
 		
 		//Scanner sb = new Scanner(System.in);
-		/*//not needed until sprint 3
+		//not needed until sprint 3
+		/*
 		System.out.println("Please enter your username and password");
-		String username = sb.nextLine();
-		String Password = sb.nextLine();
+		String username = sc.nextLine();
+		String Password = sc.nextLine();
 		 System.out.print("Please re-enter the password to confirm : ");
-	    String Confirm = sb.nextLine();
+	    String Confirm = sc.nextLine();
 	    boolean condition;
 		condition = isValid(Password);
 	    while (!Password.equals(Confirm) && (!condition)) {
@@ -101,7 +99,7 @@ public class Management
 			System.out.println("5. Logout");
 			System.out.println("                                ");
 			System.out.println("Enter an Option:                ");
-			
+			//Toolkit.getDefaultToolkit().beep(); 
 			input = sc.nextInt();
 			
 			switch(input) 
@@ -235,27 +233,5 @@ public class Management
 		   System.out.println("You have choose " + cinemainput + " to watch the movie today.");
 	}
 	
-	public static boolean isValid(String password) {
-	    Boolean atleastOneUpper = false;
-	    Boolean atleastOneLower = false;
-	    Boolean atleastOneDigit = false;
 
-	    if (password.length() < 8) { // If its less then 8 characters, its automatically not valid
-	        return false;
-	    }
-
-	    for (int i = 0; i < password.length(); i++) { // Lets iterate over only once. Saving time
-	        if (Character.isUpperCase(password.charAt(i))) {
-	            atleastOneUpper = true;
-	        }
-	        else if (Character.isLowerCase(password.charAt(i))) {
-	            atleastOneLower = true;
-	        }
-	        else if (Character.isDigit(password.charAt(i))) {
-	            atleastOneDigit = true;
-	        }
-	    }
-
-	    return (atleastOneUpper && atleastOneLower && atleastOneDigit); // Return true IFF the password is atleast eight characters long, has atleast one upper, lower and digit
-	}
 }
