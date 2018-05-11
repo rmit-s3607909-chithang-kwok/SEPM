@@ -17,6 +17,12 @@ public class Management
 	public static void main(String[] args) 
 	{
 		int input = 0;
+		//String username;
+		//String Password;
+		//String Confirm;
+		
+		
+		Booking[] Booking = new Booking[20];
 		
 		Cinema lilydale = new Cinema("Lilydale");
 		cinemas.add(lilydale);
@@ -27,17 +33,37 @@ public class Management
 		Customer customer = new Customer("Naomi", "a", "naomi@gmail.com", "Ringwood East");
 		customers.add(customer);
 		
+		Scanner sb = new Scanner(System.in);
 		
-		//Booking[] Booking = new Booking[20];
-		//System.out.println("Please enter your username and passsword");
-		//System.out.println("Your username" + username + "Your Password" + Password);
+		System.out.println("Please enter your username and password");
+		String username = sb.nextLine();
+		String Password = sb.nextLine();
+		 System.out.print("Please re-enter the password to confirm : ");
+	    String Confirm = sb.nextLine();
+	    boolean condition;
+		condition = isValid(Password);
+	    while (!Password.equals(Confirm) && (!condition)) {
+	        System.out.println("The password is invalid");
+	        System.out.print("Please enter the password again : ");
+	        Password = sb.nextLine();
+	        System.out.print("Please re-enter the password to confirm : ");
+	        Confirm = sb.nextLine();
+		}
+		System.out.println("Your username is " + username + "and Your Password is " + Password);
+		System.out.println("You have login successfully. ");
 		
+<<<<<<< HEAD
 	   // if (isValid != TRUE) {
 	    	//System.out.println("Your uaername and password are not valid please type again.");
 	    	//else
 	    	//System.out.println("Login Successfully");
 			
 	    //}
+=======
+	   
+	    
+		
+>>>>>>> d2fb0a9da9c1b0f173ae48ca8e6a61b9981ee372
 		do 
 		{			
 			System.out.println("Welcome to the CinenoPlex Management System (JMOSS). ");
@@ -64,12 +90,15 @@ public class Management
 					searchByMovie();
 					break;
 				case 4:
+					searchByCinema();
 					break;
-				case 5:
-					break;
-			}
+				//case 5:
+					//break;
+			}if (input != 1 && input != 2 && input != 3 && input != 4);
+			System.out.println("Please enter the correct number? ");
 		}
 		while(input!=5);
+		System.out.println("Program exit");
 }
 	
 	public static void createBooking() 
@@ -102,7 +131,8 @@ public class Management
 		movieSelected = movieSelection(cinemaSelected);
 		sessionSelected = sessionSelection(cinemaSelected, movieSelected);
 		customerSelected = customerSelection(sessionSelected);
-		sessionSelected.makeBooking(customerSelected);			
+		sessionSelected.makeBooking(customerSelected);		
+		System.out.println("The following Booking have been created.");
 	}
 	
 	public static void deleteBooking()
@@ -116,7 +146,8 @@ public class Management
 		movieSelected = movieSelection(cinemaSelected);
 		sessionSelected = sessionSelection(cinemaSelected, movieSelected);
 		customerSelected = customerSelection(sessionSelected);
-		sessionSelected.deleteBooking(customerSelected);		
+		sessionSelected.deleteBooking(customerSelected);	
+		System.out.println("The following Booking have been cancelled");
 	}
 	
 	private static void listCinemas()
@@ -229,6 +260,7 @@ public class Management
 	private static void searchByMovie()
 	{
 		String movieSearch;
+		
 		Movie movieSearched;
 		System.out.println("Enter movie name");
 		sc.nextLine();
@@ -242,5 +274,59 @@ public class Management
 				movieSearched = movies.get(i);
 			}
 		}
+<<<<<<< HEAD
+=======
+		
+		System.out.println("You have choosed " + movieSearch + " to watch today.");
+		
+		
+		
+>>>>>>> d2fb0a9da9c1b0f173ae48ca8e6a61b9981ee372
+	}
+	
+	private static void searchByCinema()
+	{
+		   String CinemaSearched;
+		   int cinemainput;
+		   
+		   Scanner sa = new Scanner(System.in);
+		   
+		   System.out.println("Please enter the Cinema number you want to watch the movie?");
+		   System.out.println("1. St Kilda ");
+		   System.out.println("2. Fitzroy");
+		   System.out.println("3. Melbourne CBD");
+		   System.out.println("4. Sunshine");
+		   System.out.println("5. Lilydale");
+		   
+		   cinemainput = sa.nextInt();
+		   
+		   System.out.println("You have choose " + cinemainput + " to watch the movie today.");
+		   
+		   
+		   
+	}
+	
+	public static boolean isValid(String password) {
+	    Boolean atleastOneUpper = false;
+	    Boolean atleastOneLower = false;
+	    Boolean atleastOneDigit = false;
+
+	    if (password.length() < 8) { // If its less then 8 characters, its automatically not valid
+	        return false;
+	    }
+
+	    for (int i = 0; i < password.length(); i++) { // Lets iterate over only once. Saving time
+	        if (Character.isUpperCase(password.charAt(i))) {
+	            atleastOneUpper = true;
+	        }
+	        else if (Character.isLowerCase(password.charAt(i))) {
+	            atleastOneLower = true;
+	        }
+	        else if (Character.isDigit(password.charAt(i))) {
+	            atleastOneDigit = true;
+	        }
+	    }
+
+	    return (atleastOneUpper && atleastOneLower && atleastOneDigit); // Return true IFF the password is atleast eight characters long, has atleast one upper, lower and digit
 	}
 }
