@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.*;
 
 public class Management 
 {
@@ -21,7 +22,6 @@ public class Management
 		//String Password;
 		//String Confirm;
 		
-		
 		Booking[] Booking = new Booking[20];
 		
 		Cinema lilydale = new Cinema("Lilydale");
@@ -29,12 +29,13 @@ public class Management
 		Movie blackPanther = new Movie("Black Panther");
 		lilydale.addMovie(blackPanther);
 		lilydale.addSession("25th February", blackPanther);
+		movies.add(blackPanther);
 		
 		Customer customer = new Customer("Naomi", "a", "naomi@gmail.com", "Ringwood East");
 		customers.add(customer);
 		
 		Scanner sb = new Scanner(System.in);
-		
+		/*//not needed until sprint 3
 		System.out.println("Please enter your username and password");
 		String username = sb.nextLine();
 		String Password = sb.nextLine();
@@ -52,18 +53,7 @@ public class Management
 		System.out.println("Your username is " + username + "and Your Password is " + Password);
 		System.out.println("You have login successfully. ");
 		
-<<<<<<< HEAD
-	   // if (isValid != TRUE) {
-	    	//System.out.println("Your uaername and password are not valid please type again.");
-	    	//else
-	    	//System.out.println("Login Successfully");
-			
-	    //}
-=======
-	   
-	    
-		
->>>>>>> d2fb0a9da9c1b0f173ae48ca8e6a61b9981ee372
+*/
 		do 
 		{			
 			System.out.println("Welcome to the CinenoPlex Management System (JMOSS). ");
@@ -108,31 +98,33 @@ public class Management
 		Session sessionSelected;
 		Customer customerSelected;
 		int selection = 0;
-		System.out.println("Please enter select a movie");
-		listMovies();
 		
-		System.out.println("OR a cinema");
+		//System.out.println("Please enter select a movie");
+		//listMovies();
+		
+		System.out.println("Enter a cinema");
 		listCinemas();
 		
 		selection = sc.nextInt();
+		cinemaSelected = cinemas.get(selection-1);
 		
-		if(selection > movies.size())
-		{
-			cinemaSelected = cinemas.get(selection);
-			
-			
-		}
-		else
-		{
-			movieSelected = movies.get(selection);
-		}
+		cinemaSelected.listSessions();
+		selection = sc.nextInt();
 		
-		cinemaSelected = cinemaSelection();
-		movieSelected = movieSelection(cinemaSelected);
-		sessionSelected = sessionSelection(cinemaSelected, movieSelected);
-		customerSelected = customerSelection(sessionSelected);
-		sessionSelected.makeBooking(customerSelected);		
+		sessionSelected = cinemaSelected.cinemaSessions.get(selection-1);
+		System.out.println("Enter customer");
+		
+		for(int i = 0; i < customers.size(); i++)
+		{
+			Systemou
+		}
+		//cinemaSelected = cinemaSelection();
+		//movieSelected = movieSelection(cinemaSelected);
+		//sessionSelected = sessionSelection(cinemaSelected, movieSelected);
+		//customerSelected = customerSelection(sessionSelected);
+		//sessionSelected.makeBooking(customerSelected);		
 		System.out.println("The following Booking have been created.");
+	
 	}
 	
 	public static void deleteBooking()
@@ -162,7 +154,7 @@ public class Management
 		//cinemaSelected = cinemas.get(cinemaSelection-1); 
 		//return cinemaSelected;
 	}
-	
+	/*
 	private static void listMovies()
 	{
 		int movieSelection;
@@ -192,7 +184,7 @@ public class Management
 		//cinemaSelected = cinemas.get(cinemaSelection-1); 
 		//return cinemaSelected;
 	}
-	
+	*/
 	private static int retrieveSelection()
 	{
 		int selection;
@@ -274,14 +266,8 @@ public class Management
 				movieSearched = movies.get(i);
 			}
 		}
-<<<<<<< HEAD
-=======
 		
 		System.out.println("You have choosed " + movieSearch + " to watch today.");
-		
-		
-		
->>>>>>> d2fb0a9da9c1b0f173ae48ca8e6a61b9981ee372
 	}
 	
 	private static void searchByCinema()
@@ -301,9 +287,6 @@ public class Management
 		   cinemainput = sa.nextInt();
 		   
 		   System.out.println("You have choose " + cinemainput + " to watch the movie today.");
-		   
-		   
-		   
 	}
 	
 	public static boolean isValid(String password) {

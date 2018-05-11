@@ -37,6 +37,10 @@ public Movie movie;
 		return date;
 	}
 		
+	public String getMovie()
+	{
+		return movie.getName();
+	}
 	public void deleteBooking(Customer customer) 
 	{
 		for(int i = 0; i< bookings.size(); i++)
