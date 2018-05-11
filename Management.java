@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class Management 
 {
-	 private static String userName;
-	 private static String password;
+	 //private static String userName;
+	 //private static String password;
 	
 	 private static ArrayList<Customer> customers = new ArrayList<Customer>();
 	 private static ArrayList<Movie> movies = new ArrayList<Movie>(); //need for movies search
@@ -12,6 +12,7 @@ public class Management
 	 private static ArrayList<Cinema> cinemas = new ArrayList<Cinema>();
 	
 	 static Scanner sc = new Scanner(System.in);
+	 static int counter = 0;
 
 	public static void main(String[] args) 
 	{
@@ -37,7 +38,6 @@ public class Management
 	    	//System.out.println("Login Successfully");
 			
 	    //}
-		
 		do 
 		{			
 			System.out.println("Welcome to the CinenoPlex Management System (JMOSS). ");
@@ -78,6 +78,25 @@ public class Management
 		Movie movieSelected;
 		Session sessionSelected;
 		Customer customerSelected;
+		int selection = 0;
+		System.out.println("Please enter select a movie");
+		listMovies();
+		
+		System.out.println("OR a cinema");
+		listCinemas();
+		
+		selection = sc.nextInt();
+		
+		if(selection > movies.size())
+		{
+			cinemaSelected = cinemas.get(selection);
+			
+			
+		}
+		else
+		{
+			movieSelected = movies.get(selection);
+		}
 		
 		cinemaSelected = cinemaSelection();
 		movieSelected = movieSelection(cinemaSelected);
@@ -100,6 +119,34 @@ public class Management
 		sessionSelected.deleteBooking(customerSelected);		
 	}
 	
+	private static void listCinemas()
+	{
+		int cinemaSelection;
+		Cinema cinemaSelected;
+		for(int i = 0; i < cinemas.size(); i++)
+		{
+			System.out.println((counter+1) + ". " + cinemas.get(i).getLocation());
+		}
+		//cinemaSelection = sc.nextInt();
+		//cinemaSelected = cinemas.get(cinemaSelection-1); 
+		//return cinemaSelected;
+	}
+	
+	private static void listMovies()
+	{
+		int movieSelection;
+		Movie movieSelected;
+		int i;
+		for(i = 0; i < movies.size(); i++)
+		{
+			System.out.println((i+1) + ". " + movies.get(i).getName());
+		}
+		counter = i;
+		//movieSelection = sc.nextInt();
+		//movieSelected = movies.get(movieSelection-1); 
+		//return movieSelected;
+	}
+	
 	private static Cinema cinemaSelection()
 	{
 		int cinemaSelection;
@@ -110,10 +157,18 @@ public class Management
 		{
 			System.out.println((i+1) + ". " + cinemas.get(i).getLocation());
 		}
-		cinemaSelection = sc.nextInt();
-		cinemaSelected = cinemas.get(cinemaSelection-1); 
-		return cinemaSelected;
+		//cinemaSelection = sc.nextInt();
+		//cinemaSelected = cinemas.get(cinemaSelection-1); 
+		//return cinemaSelected;
 	}
+	
+	private static int retrieveSelection()
+	{
+		int selection;
+		selection = sc.nextInt();
+		return selection;
+	}
+	
 	
 	private static Movie movieSelection(Cinema cinemaSelected)
 	{
@@ -187,8 +242,5 @@ public class Management
 				movieSearched = movies.get(i);
 			}
 		}
-		
-		
-		
 	}
 }
