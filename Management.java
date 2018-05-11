@@ -135,17 +135,17 @@ public class Management
 		Customer customerSelected;
 		int selection = 0;
 
-		System.out.println("Enter a cinema");
+		System.out.println("Select a cinema: ");
 		listCinemas();
 		
 		selection = sc.nextInt();
 		cinemaSelected = cinemas.get(selection-1);
-		System.out.println("Enter a session: ");
+		System.out.println("Select a session: ");
 		cinemaSelected.listSessions();
 		selection = sc.nextInt();
 		sessionSelected = cinemaSelected.cinemaSessions.get(selection-1);
 		
-		System.out.println("Enter customer");
+		System.out.println("Select a customer: ");
 		
 		for(int i = 0; i < customers.size(); i++)
 		{
@@ -169,18 +169,18 @@ public class Management
 		Booking bookingSelected;
 		int selection = 0;
 		
-		System.out.println("Enter a cinema");
+		System.out.println("Select a customer: ");
 		listCinemas();
 		
 		selection = sc.nextInt();
 		cinemaSelected = cinemas.get(selection-1);
 		
-		System.out.println("Enter a session");
+		System.out.println("Select a session: ");
 		cinemaSelected.listSessions();
 		selection = sc.nextInt();
 		sessionSelected = cinemaSelected.cinemaSessions.get(selection-1);
 		
-		System.out.println("Enter a booking");
+		System.out.println("Select a booking to delete: ");
 		sessionSelected.listBookings();
 		selection = sc.nextInt();
 		bookingSelected = sessionSelected.bookings.remove(selection-1);
@@ -194,9 +194,6 @@ public class Management
 		{
 			System.out.println((i+1) + ". " + cinemas.get(i).getLocation());
 		}
-		//cinemaSelection = sc.nextInt();
-		//cinemaSelected = cinemas.get(cinemaSelection-1); 
-		//return cinemaSelected;
 	}
 	
 	private static void searchByMovie()
