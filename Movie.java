@@ -1,8 +1,6 @@
 
 public class Movie {
-    // read
 	private String name;
-    //private int id;
     
     public Movie(String name) {
 		// TODO Auto-generated constructor stub

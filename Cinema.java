@@ -15,6 +15,7 @@ public class Cinema
 			
 		}
 	}	
+
 */
 	public Cinema(String location) 
 	{
@@ -27,14 +28,22 @@ public class Cinema
 		return location;
 	}
 
-	public void addSession(String date, Movie movie)
+	public void addSession(String id, String date, Movie movie)
 	{
-		Session session = new Session(date, movie);
+		Session session = new Session(id, date, movie);
 		cinemaSessions.add(session);
 	}
 	
 	public void addMovie(Movie movie)
 	{
 		movies.add(movie);
+	}
+	
+	public void listSessions()
+	{
+		for(int i = 0; i < cinemaSessions.size(); i++)
+		{
+			System.out.println((i+1) + "." + cinemaSessions.get(i).getMovie() + " " + cinemaSessions.get(i).getDate());
+		}
 	}
 }

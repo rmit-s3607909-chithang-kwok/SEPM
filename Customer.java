@@ -24,4 +24,9 @@ public class Customer
 		return id;
 	}
 	
+	public String getEmail()
+	{
+		return email;
+	}
+	
 }

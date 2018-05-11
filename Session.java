@@ -4,32 +4,23 @@ import java.util.ArrayList;
 public class Session{
 ArrayList<Booking> bookings =  new ArrayList<Booking>(20);
 private String date;
-//private int id;
+private String id;
 public Movie movie;
 
-	public Session(String date,/* int id, */Movie movie) {
+	public Session(String id, String date, Movie movie) {
 		this.date = date;
-		//this.id=id;
+		this.id = id;
 		this.movie=movie;
 	}
-
-	/*public int getID() {
-		return id;
-	}
-	*/
-	/*
-	public void setID() {
-		this.id = id;
-	}
-	*/
-	public void setDate() {
-		this.date=date;
-	}
-	
 	public void makeBooking(Customer customer) 
 	{
 		Booking booking = new Booking(customer);
 		bookings.add(booking);
+	}
+	
+	public String getID()
+	{
+		return id;
 	}
 	
 	public String getDate()
@@ -49,6 +40,13 @@ public Movie movie;
 			{
 				bookings.remove(i);
 			}
+		}
+	}
+	public void listBookings()
+	{
+		for(int i = 0; i < bookings.size(); i++)
+		{
+			System.out.println((i+1) + ". " + bookings.get(i).getID() + " " + bookings.get(i).getCustomer());
 		}
 	}
 }	
