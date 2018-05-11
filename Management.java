@@ -199,7 +199,7 @@ public class Management
 		//return cinemaSelected;
 	}
 	
-	private static void searchByMovie()
+/*	private static void searchByMovie()
 	{
 		String movieSearch;
 		
@@ -218,6 +218,29 @@ public class Management
 		}
 		
 		System.out.println("You have choosed " + movieSearch + " to watch today.");
+	}
+	*/
+	
+	//Henry movie search
+		private static void searchByMovie()
+	{	
+		int movieno;
+		Movie blackPanther = new Movie ("Black Panther");
+		movies.add(blackPanther);
+		String[] sessions = new String[] {"15 Feb 2:30", "14 March 4:30", "30 April 5:30"};
+		blackPanther.addSession(sessions );
+		
+		System.out.println("Please select from the following movies:");
+		System.out.println("1. Black Panther");
+		
+		Scanner sc = new Scanner(System.in);
+		movieno = sc.nextInt();
+		
+		if (movieno ==1)
+		{
+			System.out.println(Arrays.toString(blackPanther.getDate()));
+		}
+		
 	}
 	
 	private static void searchByCinema()
