@@ -12,10 +12,11 @@ public Movie movie;
 		this.id = id;
 		this.movie=movie;
 	}
-	public void makeBooking(Customer customer) 
+	public void makeBooking(/*String id,*/ Customer customer) 
 	{
-		Booking booking = new Booking(customer);
+		Booking booking = new Booking(id, customer, this);
 		bookings.add(booking);
+		customer.addBooking(booking);
 	}
 	
 	public String getID()

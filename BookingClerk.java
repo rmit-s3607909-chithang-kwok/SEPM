@@ -4,7 +4,7 @@ public class BookingClerk {
 	private String password;
 	private String id;
 	
-	public BookingClerk() {
+	public BookingClerk(String username, String password, String id) {
 		this.username=username;
 		this.password=password;
 		this.id=id;

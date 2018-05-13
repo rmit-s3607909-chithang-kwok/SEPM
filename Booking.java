@@ -3,12 +3,14 @@ public class Booking{
 	
 	String id;
 	Customer customer;	
+	Session session;
 
 	
-	public Booking(/*String id, */Customer customer) 
+	public Booking(String id, Customer customer, Session session) 
 	{
 		this.id = id;
 		this.customer = customer;
+		this.session = session;
 	}
 	
 	public String getID()
@@ -20,7 +22,11 @@ public class Booking{
 	{
 		return customer.getEmail();
 	}
-
+	
+	public String getSession()
+	{
+		return (session.getID() + session.getDate() + session.getMovie());
+	}
 	
 
 }
