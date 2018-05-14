@@ -1,3 +1,4 @@
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -120,16 +121,8 @@ public class Management
 			System.out.println("2. Delete Booking");
 			System.out.println("3. Search Movie");
 			System.out.println("4. Search Cinema");
-<<<<<<< HEAD
-			System.out.println("5. Search Customer");
-			System.out.println("6. Logout");
-=======
 			System.out.println("5. Logout");
 			System.out.println("6. Exit");
-<<<<<<< HEAD
->>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
-=======
->>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
 			System.out.println("                                ");
 			System.out.println("Enter an Option:                ");
 			
@@ -150,29 +143,12 @@ public class Management
 					searchByCinema();
 					break;
 				case 5:
-<<<<<<< HEAD
-<<<<<<< HEAD
-					searchByCustomerEmail();	
-					break;
-				case 6:
-					//userLogin();
-					mainMenu();
-			}
-			if (input != 1 && input != 2 && input != 3 && input != 4 && input != 5) 
-			{
-				System.out.println("Please enter a valid option ");
-=======
-=======
->>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
 					System.out.println("Go back to the Beginnning");
+					Toolkit.getDefaultToolkit().beep();
 					continue;
 					
 			}if (input != 1 && input != 2 && input != 3 && input != 4 && input != 5 && input != 6) {
 				System.out.println("Please enter the correct number? ");
-<<<<<<< HEAD
->>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
-=======
->>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
 			}
 		}
 		while(input != 6 );
@@ -204,31 +180,9 @@ public class Management
 		cinemaSelected = cinemaSelection();
 		movieSelected = movieSelection(cinemaSelected);
 		sessionSelected = sessionSelection(cinemaSelected, movieSelected);
-<<<<<<< HEAD
-<<<<<<< HEAD
-		
-		if(sessionSelected.bookings.size() < 1)
-		{
-			System.out.println("No bookings to delete");
-		}
-		else
-		{
-			System.out.println("Enter the booking to delete: ");
-			sessionSelected.listBookings();
-			bookingSelect = sc.nextInt();
-			sessionSelected.deleteBooking(bookingSelect);
-			System.out.println("The Booking have been cancelled");
-		}
-=======
 		customerSelected = customerSelection(sessionSelected);
 		sessionSelected.deleteBooking(customerSelected);	
 		System.out.println("The following Booking have been cancelled");
->>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
-=======
-		customerSelected = customerSelection(sessionSelected);
-		sessionSelected.deleteBooking(customerSelected);	
-		System.out.println("The following Booking have been cancelled");
->>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
 	}
 	
 	private static Cinema cinemaSelection()
@@ -285,17 +239,8 @@ public class Management
 	
 	private static Customer customerSelection(Session sessionSelected)
 	{
-<<<<<<< HEAD
-<<<<<<< HEAD
-		//String customerID;
-		int selecto = 0;
-		//Customer customerSelected;
-=======
-=======
->>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
 		String customerID;
 		Customer customerSelected;
->>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
 		
 		System.out.println("Please enter Customer ID: ");
 		sc.nextLine();
@@ -340,8 +285,9 @@ public class Management
 		String CinemaSearch;
 		
 		Cinema CinemaSearched;
-		System.out.println("Enter the cinema name you wish to enter?");
-		sc.nextLine();
+		System.out.println("List the cinema Session");
+		Cinema.listSessions();
+		
 		CinemaSearch = sc.nextLine();         
 		
 		for(int i = 0; i < cinemaSessions.size(); i++)
@@ -357,24 +303,6 @@ public class Management
 		   
 	
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
-	private static void searchByCustomerEmail()
-	{
-		int selecti = 0;
-		System.out.println("Select a customer: ");
-		for(int j = 0; j < customers.size(); j++)
-		{
-			System.out.println((j+1) + ". " + customers.get(j).getEmail());
-		}
-		selecti = sc.nextInt();
-		
-		customers.get(selecti-1).listBookings();
-	}	
-=======
->>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
-=======
->>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
 	
 	
 	public static void UserLogin()
