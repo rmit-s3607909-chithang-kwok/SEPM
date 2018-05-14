@@ -25,7 +25,7 @@ public class Booking{
 	
 	public String getSession()
 	{
-		return (session.getID() + session.getDate() + session.getMovie());
+		return (session.getID() + " " + session.getMovie() +  " " + session.getDate());
 	}
 	
 

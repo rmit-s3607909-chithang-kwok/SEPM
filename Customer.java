@@ -9,7 +9,6 @@ public class Customer
 	String suburb;
 	String id;
 	ArrayList<Booking> bookings =  new ArrayList<Booking>();
-	//ArrayList<Booking> bookings = new ArrayList<Booking>();
 	
 	public Customer(String name, String id, String email, String suburb)
 	{
