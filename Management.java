@@ -126,6 +126,9 @@ public class Management
 =======
 			System.out.println("5. Logout");
 			System.out.println("6. Exit");
+<<<<<<< HEAD
+>>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
+=======
 >>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
 			System.out.println("                                ");
 			System.out.println("Enter an Option:                ");
@@ -148,6 +151,7 @@ public class Management
 					break;
 				case 5:
 <<<<<<< HEAD
+<<<<<<< HEAD
 					searchByCustomerEmail();	
 					break;
 				case 6:
@@ -158,11 +162,16 @@ public class Management
 			{
 				System.out.println("Please enter a valid option ");
 =======
+=======
+>>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
 					System.out.println("Go back to the Beginnning");
 					continue;
 					
 			}if (input != 1 && input != 2 && input != 3 && input != 4 && input != 5 && input != 6) {
 				System.out.println("Please enter the correct number? ");
+<<<<<<< HEAD
+>>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
+=======
 >>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
 			}
 		}
@@ -196,6 +205,7 @@ public class Management
 		movieSelected = movieSelection(cinemaSelected);
 		sessionSelected = sessionSelection(cinemaSelected, movieSelected);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		
 		if(sessionSelected.bookings.size() < 1)
 		{
@@ -209,6 +219,11 @@ public class Management
 			sessionSelected.deleteBooking(bookingSelect);
 			System.out.println("The Booking have been cancelled");
 		}
+=======
+		customerSelected = customerSelection(sessionSelected);
+		sessionSelected.deleteBooking(customerSelected);	
+		System.out.println("The following Booking have been cancelled");
+>>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
 =======
 		customerSelected = customerSelection(sessionSelected);
 		sessionSelected.deleteBooking(customerSelected);	
@@ -271,10 +286,13 @@ public class Management
 	private static Customer customerSelection(Session sessionSelected)
 	{
 <<<<<<< HEAD
+<<<<<<< HEAD
 		//String customerID;
 		int selecto = 0;
 		//Customer customerSelected;
 =======
+=======
+>>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
 		String customerID;
 		Customer customerSelected;
 >>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
