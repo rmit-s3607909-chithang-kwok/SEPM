@@ -33,15 +33,20 @@ public Movie movie;
 	{
 		return movie.getName();
 	}
-	public void deleteBooking(Customer customer) 
+//	public void deleteBooking(Customer customer) 
+//	{
+//		for(int i = 0; i< bookings.size(); i++)
+//		{
+//			if(bookings.get(i).customer == customer)
+//			{
+//				bookings.remove(i);
+//			}
+//		}
+//	}
+	
+	public void deleteBooking(int selection)
 	{
-		for(int i = 0; i< bookings.size(); i++)
-		{
-			if(bookings.get(i).customer == customer)
-			{
-				bookings.remove(i);
-			}
-		}
+		bookings.remove(selection-1);
 	}
 	public void listBookings()
 	{

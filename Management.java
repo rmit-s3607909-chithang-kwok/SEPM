@@ -157,7 +157,7 @@ public class Management
 		sessionSelected = sessionSelection(cinemaSelected, movieSelected);
 		customerSelected = customerSelection(sessionSelected);
 		sessionSelected.makeBooking(customerSelected);		
-		System.out.println("The following Booking have been created.");
+		System.out.println("The Booking have been created.");
 	}
 	
 	public static void deleteBooking()
@@ -165,14 +165,16 @@ public class Management
 		Cinema cinemaSelected;
 		Movie movieSelected;
 		Session sessionSelected;
-		Customer customerSelected;
+		int bookingSelect;
 		
 		cinemaSelected = cinemaSelection();
 		movieSelected = movieSelection(cinemaSelected);
 		sessionSelected = sessionSelection(cinemaSelected, movieSelected);
-		customerSelected = customerSelection(sessionSelected);
-		sessionSelected.deleteBooking(customerSelected);	
-		System.out.println("The following Booking have been cancelled");
+		System.out.println("Enter the booking to delete: ");
+		sessionSelected.listBookings();
+		bookingSelect = sc.nextInt();
+		sessionSelected.deleteBooking(bookingSelect);
+		System.out.println("The Booking have been cancelled");
 	}
 	
 	private static Cinema cinemaSelection()
