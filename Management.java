@@ -108,9 +108,6 @@ public class Management
 		
 	}	
 		
-		
-		
-	   
 	    public static void SubMenu() {
 	    	int input = 0;
 	    	Scanner sc = new Scanner (System.in);
@@ -122,7 +119,7 @@ public class Management
 			System.out.println("2. Delete Booking");
 			System.out.println("3. Search Movie");
 			System.out.println("4. Search Cinema");
-<<<<<<< HEAD
+
 
 			System.out.println("5. Search Customer");
 			System.out.println("6. Logout");
@@ -130,10 +127,10 @@ public class Management
 			System.out.println("5. Logout");
 			System.out.println("6. Exit");
 
-=======
+
 			System.out.println("5. Logout");
 			System.out.println("6. Exit");
->>>>>>> d5f1700aa0a9a579302e62f5342c886258a5709f
+
 			System.out.println("                                ");
 			System.out.println("Enter an Option:                ");
 			
@@ -154,7 +151,7 @@ public class Management
 					searchByCinema();
 					break;
 				case 5:
-<<<<<<< HEAD
+
 
 					searchByCustomerEmail();	
 					break;
@@ -166,18 +163,13 @@ public class Management
 			{
 				System.out.println("Please enter a valid option ");
 
-=======
->>>>>>> d5f1700aa0a9a579302e62f5342c886258a5709f
 					System.out.println("Go back to the Beginnning");
 					Toolkit.getDefaultToolkit().beep();
 					continue;
 					
 			}if (input != 1 && input != 2 && input != 3 && input != 4 && input != 5 && input != 6) {
 				System.out.println("Please enter the correct number? ");
-<<<<<<< HEAD
 
-=======
->>>>>>> d5f1700aa0a9a579302e62f5342c886258a5709f
 			}
 		}
 		while(input != 6 );
@@ -209,7 +201,7 @@ public class Management
 		cinemaSelected = cinemaSelection();
 		movieSelected = movieSelection(cinemaSelected);
 		sessionSelected = sessionSelection(cinemaSelected, movieSelected);
-<<<<<<< HEAD
+
 		
 		if(sessionSelected.bookings.size() < 1)
 		{
@@ -228,11 +220,11 @@ public class Management
 //		sessionSelected.deleteBooking(customerSelected);	
 //		System.out.println("The following Booking have been cancelled");
 
-=======
+
 		customerSelected = customerSelection(sessionSelected);
 		sessionSelected.deleteBooking(customerSelected);	
 		System.out.println("The following Booking have been cancelled");
->>>>>>> d5f1700aa0a9a579302e62f5342c886258a5709f
+
 	}
 	
 	private static Cinema cinemaSelection()
@@ -289,7 +281,7 @@ public class Management
 	
 	private static Customer customerSelection(Session sessionSelected)
 	{
-<<<<<<< HEAD
+
 		//String customerID;
 		int selecto = 0;
 		//Customer customerSelected;
@@ -297,10 +289,10 @@ public class Management
 		String customerID;
 		Customer customerSelected;
 //>>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
-=======
+
 		String customerID;
 		Customer customerSelected;
->>>>>>> d5f1700aa0a9a579302e62f5342c886258a5709f
+
 		
 		System.out.println("Please enter Customer ID: ");
 		sc.nextLine();
@@ -360,8 +352,7 @@ public class Management
 		System.out.println("You have choosed " + CinemaSearch + " to watch the movie today.");
 		
 	}
-		   
-<<<<<<< HEAD
+
 
 	private static void searchByCustomerEmail()
 	{
@@ -376,10 +367,6 @@ public class Management
 		customers.get(selecti-1).listBookings();
 	}	
 
-=======
-	
-	
->>>>>>> d5f1700aa0a9a579302e62f5342c886258a5709f
 	
 	
 	public static void UserLogin()
