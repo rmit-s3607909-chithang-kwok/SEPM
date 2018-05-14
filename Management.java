@@ -358,6 +358,7 @@ public class Management
 	
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	private static void searchByCustomerEmail()
 	{
 		int selecti = 0;
@@ -370,6 +371,8 @@ public class Management
 		
 		customers.get(selecti-1).listBookings();
 	}	
+=======
+>>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
 =======
 >>>>>>> 5ad0935059b5e2bbc701c422f7b953c569e4a840
 	
