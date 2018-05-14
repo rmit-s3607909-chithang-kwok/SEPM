@@ -16,10 +16,11 @@ public class Management
 	 static ArrayList<Session> cinemaSessions = new ArrayList<Session>();
 	
 	 static Scanner sc = new Scanner(System.in);
+	 static Boolean condition = true;
 
 	public static void main(String[] args) 
 	{
-		int input = 0;
+		//int input = 0;
 		//String username;
 		//String Password;
 		//String Confirm;
@@ -85,76 +86,113 @@ public class Management
 		
 		Customer customer3 = new Customer("c3", "Jane Fonda", "jane@gmail.com", "Doncaster");
 		customers.add(customer3);
-		Scanner sb = new Scanner(System.in);
-		
-		do
+		//Scanner sb = new Scanner(System.in);
+		while(condition)
 		{
-			System.out.println("Please choose the options?");
-			System.out.println("1. Login");
-			System.out.println("2. Exit Program");
-			System.out.println("                 ");
-			
-			input = sc.nextInt();
-			
-			if(input == 1) {
-				UserLogin();
-			}else {
-				System.out.println("Program exit");
-			}if (input != 1 && input != 2) {
-				System.out.println("Invalid Choice.");
-			}
-		}while (input != 2);
-		
-	}	
-		
-		
-		
-	   
-	    public static void SubMenu() {
-	    	int input = 0;
-	    	Scanner sc = new Scanner (System.in);
-		do 
-		{			
-			System.out.println("Welcome to the CinenoPlex Management System (JMOSS). ");
-			System.out.println("=================================");
-			System.out.println("1. Create Booking");
-			System.out.println("2. Delete Booking");
-			System.out.println("3. Search Movie");
-			System.out.println("4. Search Cinema");
-			System.out.println("5. Logout");
-			System.out.println("6. Exit");
-			System.out.println("                                ");
-			System.out.println("Enter an Option:                ");
-			
-			input = sc.nextInt();
-			
-			switch(input) 
-			{
-				case 1:
-					createBooking();
-					break;
-				case 2:
-					deleteBooking();
-					break;
-				case 3:
-					searchByMovie();
-					break;
-				case 4:
-					searchByCinema();
-					break;
-				case 5:
-					System.out.println("Go back to the Beginnning");
-					Toolkit.getDefaultToolkit().beep();
-					continue;
-					
-			}if (input != 1 && input != 2 && input != 3 && input != 4 && input != 5 && input != 6) {
-				System.out.println("Please enter the correct number? ");
-			}
+			baseMenu();
 		}
-		while(input != 6 );
-			System.out.println("Program Exit");
-}
+	}	
 	
+	public static void baseMenu()
+		{
+			int input = 0;
+			do
+			{
+				System.out.println("Please choose the options?");
+				System.out.println("1. Login");
+				System.out.println("2. Exit Program");
+				System.out.println("                 ");
+				
+				input = sc.nextInt();
+				
+				if(input == 1) 
+				{
+					UserLogin();
+				}
+				if(input == 2)
+				{
+					condition = false;
+					break;
+				}
+			}
+			while (input != 0);
+			System.out.println("System Exit");
+			//input = 0;
+		}
+		
+	    public static void mainMenu() 
+	    {
+	    	int input = 0;
+	    	do 
+	    	{			
+	    		System.out.println("Welcome to the CinenoPlex Management System (JMOSS). ");
+	    		System.out.println("=================================");
+	    		System.out.println("1. Create Booking");
+	    		System.out.println("2. Delete Booking");
+	    		System.out.println("3. Search Movie");
+	    		System.out.println("4. Search Cinema");
+	    		System.out.println("5. Logout");
+	    		System.out.println("                                ");
+	    		System.out.println("Enter an Option:                ");
+			
+	    		input = sc.nextInt();
+			
+	    		switch(input) 
+	    		{
+					case 1:
+						createBooking();
+						break;
+					case 2:
+						deleteBooking();
+						break;
+					case 3:
+						searchByMovie();
+						break;
+					case 4:
+						searchByCinema();
+						break;
+					case 5:
+						//System.out.println("Go back to the Beginnning");
+						Toolkit.getDefaultToolkit().beep();
+						baseMenu();
+						//break;
+						//continue;
+					
+	    		}
+	    		
+	    		if (input != 1 && input != 2 && input != 3 && input != 4 && input != 5) 
+	    		{
+	    			System.out.println("Please enter the correct number? ");
+	    		}
+	    	}
+	    	
+	    	while(input != 5 );
+			System.out.println("Program Exit");
+	    }
+	    public static void UserLogin()
+		{
+			String username;
+			String password;
+			sc.nextLine();
+			System.out.println("Please enter your username?"); 
+			username = sc.nextLine();
+			System.out.println("Please enter your password?");
+			password = sc.nextLine();
+			
+			for(int i = 0; i < bookingClerks.size(); i++) 
+			{
+				if ( username.equals(bookingClerks.get(i).getUsername()) && password.equals(bookingClerks.get(i).getPassword()) )
+				{
+					System.out.println("Your username and Your Password are correct.");
+					System.out.println("You have login successfully. ");
+					mainMenu();
+					break;
+				}
+				else
+					System.out.println("Your username and password are incorrect please type it again.");
+				continue;
+	    }
+		}
 	public static void createBooking() 
 	{
 		Cinema cinemaSelected;
@@ -176,13 +214,24 @@ public class Management
 		Movie movieSelected;
 		Session sessionSelected;
 		Customer customerSelected;
-		
+		int bookingSelect;
 		cinemaSelected = cinemaSelection();
 		movieSelected = movieSelection(cinemaSelected);
 		sessionSelected = sessionSelection(cinemaSelected, movieSelected);
-		customerSelected = customerSelection(sessionSelected);
-		sessionSelected.deleteBooking(customerSelected);	
-		System.out.println("The following Booking have been cancelled");
+		
+		if(sessionSelected.bookings.size() < 1)
+		{
+			System.out.println("No bookings to delete");
+		}
+		else
+		{
+			System.out.println("Enter the booking to delete: ");
+			sessionSelected.listBookings();
+			bookingSelect = sc.nextInt();
+			sessionSelected.deleteBooking(bookingSelect);
+			System.out.println("The Booking have been cancelled");
+		}
+
 	}
 	
 	private static Cinema cinemaSelection()
@@ -299,39 +348,5 @@ public class Management
 		
 		System.out.println("You have choosed " + CinemaSearch + " to watch the movie today.");
 		
-	}
-		   
-	
-	
-	
-	
-	public static void UserLogin()
-	{
-		String username;
-		String password;
-
-		Scanner sb = new Scanner(System.in);
-		 
-		
-			System.out.println("Please enter your username?"); 
-			username = sb.nextLine();
-			System.out.println("Please enter your password?");
-			password = sb.nextLine();
-		
-	
-		
-		
-		for(int i = 0; i < bookingClerks.size(); i++) 
-		{
-			if ( username.equals(bookingClerks.get(i).getUsername()) && password.equals(bookingClerks.get(i).getPassword()) )
-			{
-				System.out.println("Your username and Your Password are correct.");
-				System.out.println("You have login successfully. ");
-				SubMenu();
-			}
-			else
-				System.out.println("Your username and password are incorrect please type it again.");
-			continue;
-    }
 	}
 }
