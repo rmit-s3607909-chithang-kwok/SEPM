@@ -157,7 +157,6 @@ public class Management
 						baseMenu();
 						//break;
 						//continue;
-					
 	    		}
 	    		
 	    		if (input != 1 && input != 2 && input != 3 && input != 4 && input != 5) 
@@ -266,43 +265,38 @@ public class Management
 	
 	private static Session sessionSelection(Cinema cinemaSelected, Movie movieSelected)
 	{
-		//int sessionSelection;
+		int sessionSelection;
 		Session sessionSelected;
-		
+		sc.nextLine();
 		System.out.println("Please enter session: ");
-		int number = 0;
+		
 		for(int i = 0; i < cinemaSelected.cinemaSessions.size(); i++)
 		{
-			int counter = 0;
 			if(movieSelected == cinemaSelected.cinemaSessions.get(i).movie)
 			{
-				counter ++;
-				System.out.println((counter++) + ". " + cinemaSelected.cinemaSessions.get(i).getDate());
-				number = i;
+				System.out.println((i) + ". " + cinemaSelected.cinemaSessions.get(i).getDate());
 			}
 		}
-		//sessionSelection = sc.nextInt();
-		sessionSelected = cinemaSelected.cinemaSessions.get(number);
+		sessionSelection = sc.nextInt();
+		sessionSelected = cinemaSelected.cinemaSessions.get(sessionSelection);
 		return sessionSelected;
 	}
 	
 	private static Customer customerSelection(Session sessionSelected)
 	{
-		String customerID;
+		int customerSelection;
 		Customer customerSelected;
+		sc.nextLine();
 		
 		System.out.println("Please enter Customer ID: ");
-		sc.nextLine();
-		customerID = sc.nextLine();
+		
 		for(int i = 0; i < customers.size(); i++)
 		{
-			if( customerID.equals(customers.get(i).getID()) )
-			{
-				customerSelected = customers.get(i);
-				return customerSelected;
-			}
+			System.out.println((i+1) + ". " + customers.get(i).getEmail());
 		}
-		return null;
+		customerSelection = sc.nextInt();
+		
+		return customers.get(customerSelection-1);
 	}
 	
 	private static void searchByMovie()
@@ -325,8 +319,6 @@ public class Management
 		
 		System.out.println("You have choosed " + movieSearch + " to watch today.");
 		
-		
-		
 	}
 	
 	private static void searchByCinema()
@@ -335,7 +327,7 @@ public class Management
 		
 		Cinema CinemaSearched;
 		System.out.println("List the cinema Session");
-		Cinema.listSessions();
+		//Cinema.listSessions();
 		
 		CinemaSearch = sc.nextLine();         
 		
