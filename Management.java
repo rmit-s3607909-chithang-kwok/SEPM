@@ -131,7 +131,8 @@ public class Management
 	    		System.out.println("2. Delete Booking");
 	    		System.out.println("3. Search Movie");
 	    		System.out.println("4. Search Cinema");
-	    		System.out.println("5. Logout");
+	    		System.out.println("5. Search By Customer Email");
+	    		System.out.println("6. Logout");
 	    		System.out.println("                                ");
 	    		System.out.println("Enter an Option:                ");
 			
@@ -152,20 +153,20 @@ public class Management
 						searchByCinema();
 						break;
 					case 5:
-						//System.out.println("Go back to the Beginnning");
+						searchByCustomer();
+						break;
+					case 6:
 						Toolkit.getDefaultToolkit().beep();
 						baseMenu();
-						//break;
-						//continue;
 	    		}
 	    		
-	    		if (input != 1 && input != 2 && input != 3 && input != 4 && input != 5) 
+	    		if (input != 1 && input != 2 && input != 3 && input != 4 && input != 5 && input != 6) 
 	    		{
-	    			System.out.println("Please enter the correct number? ");
+	    			System.out.println("Please enter a valid number ");
 	    		}
 	    	}
 	    	
-	    	while(input != 5 );
+	    	while(input != 6 );
 			System.out.println("Program Exit");
 	    }
 	    public static void UserLogin()
@@ -205,6 +206,7 @@ public class Management
 		customerSelected = customerSelection(sessionSelected);
 		sessionSelected.makeBooking(customerSelected);		
 		System.out.println("The following Booking have been created.");
+		System.out.println();
 	}
 	
 	public static void deleteBooking()
@@ -230,7 +232,7 @@ public class Management
 			sessionSelected.deleteBooking(bookingSelect);
 			System.out.println("The Booking have been cancelled");
 		}
-
+		System.out.println();
 	}
 	
 	private static Cinema cinemaSelection()
@@ -318,7 +320,7 @@ public class Management
 		}
 		
 		System.out.println("You have choosed " + movieSearch + " to watch today.");
-		
+		System.out.println();
 	}
 	
 	private static void searchByCinema()
@@ -339,6 +341,27 @@ public class Management
 		}
 		
 		System.out.println("You have choosed " + CinemaSearch + " to watch the movie today.");
+		System.out.println();
+	}
+	
+	private static void searchByCustomer()
+	{
+		int customerSelect = 0;
+		Customer customerSelected;
+		sc.nextLine();
+		System.out.println("Select a customer: ");
+		for(int i = 0; i< customers.size(); i++)
+		{
+			System.out.println((i) + "." + customers.get(i).email);
+		}
+		customerSelect = sc.nextInt();
+		customerSelected = customers.get(customerSelect);
 		
+		customerSelected.listBookings();
+		if(customerSelected.bookings.size() == 0)
+		{
+			System.out.println("There are no bookings to display");
+		}
+		System.out.println();
 	}
 }
