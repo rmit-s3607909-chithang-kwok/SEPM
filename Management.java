@@ -191,7 +191,7 @@ public class Management
 				else
 					System.out.println("Your username and password are incorrect please type it again.");
 				continue;
-	    }
+			}
 		}
 	public static void createBooking() 
 	{
@@ -199,14 +199,30 @@ public class Management
 		Movie movieSelected;
 		Session sessionSelected;
 		Customer customerSelected;
+		int confirmation = 0;
+		sc.nextLine();
 		
 		cinemaSelected = cinemaSelection();
 		movieSelected = movieSelection(cinemaSelected);
 		sessionSelected = sessionSelection(cinemaSelected, movieSelected);
 		customerSelected = customerSelection(sessionSelected);
-		sessionSelected.makeBooking(customerSelected);		
-		System.out.println("The following Booking have been created.");
-		System.out.println();
+		System.out.println("Are you sure you want to create this booking?");
+		System.out.println("1. Yes");
+		System.out.println("2. No");
+		confirmation = sc.nextInt();
+		if(confirmation == 1)
+		{
+			sessionSelected.makeBooking(customerSelected);		
+			System.out.println("The following Booking have been created.");
+			System.out.println();
+		}
+		else if(confirmation ==2)
+		{
+			System.out.println("Booking has been cancelled");
+			System.out.println();
+		}
+				
+		
 	}
 	
 	public static void deleteBooking()
@@ -215,7 +231,10 @@ public class Management
 		Movie movieSelected;
 		Session sessionSelected;
 		Customer customerSelected;
+		sc.nextLine();
+		int confirmation = 0;
 		int bookingSelect;
+		
 		cinemaSelected = cinemaSelection();
 		movieSelected = movieSelection(cinemaSelected);
 		sessionSelected = sessionSelection(cinemaSelected, movieSelected);
@@ -229,8 +248,21 @@ public class Management
 			System.out.println("Enter the booking to delete: ");
 			sessionSelected.listBookings();
 			bookingSelect = sc.nextInt();
-			sessionSelected.deleteBooking(bookingSelect);
-			System.out.println("The Booking have been cancelled");
+			
+			System.out.println("Are you sure you want to delete this booking?");
+			System.out.println("1. Yes");
+			System.out.println("2. No");
+			confirmation = sc.nextInt();
+			
+			if(confirmation == 1)
+			{
+				sessionSelected.deleteBooking(bookingSelect);
+				System.out.println("The Booking have been deleted");
+			}
+			else if(confirmation == 2)
+			{
+				System.out.println("Booking will not be deleted");
+			}
 		}
 		System.out.println();
 	}
@@ -326,8 +358,8 @@ public class Management
 	private static void searchByCinema()
 	{
 		String CinemaSearch;
-		
 		Cinema CinemaSearched;
+		
 		System.out.println("List the cinema Session");
 		//Cinema.listSessions();
 		
