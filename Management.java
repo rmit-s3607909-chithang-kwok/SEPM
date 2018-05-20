@@ -20,10 +20,6 @@ public class Management
 
 	public static void main(String[] args) 
 	{
-		//int input = 0;
-		//String username;
-		//String Password;
-		//String Confirm;
 		
 		BookingClerk BookingClerk1 = new BookingClerk("b1", "b2", "b3");
 		bookingClerks.add(BookingClerk1);
@@ -40,8 +36,14 @@ public class Management
 		Cinema cinema2 = new Cinema("Sunshine");
 		cinemas.add(cinema2);
 		
-		Cinema cinema3 = new Cinema("CBD");
+		Cinema cinema3 = new Cinema("Melbourne CBD");
 		cinemas.add(cinema3);
+		
+		Cinema cinema4 = new Cinema("St Kilda");
+		cinemas.add(cinema4);
+		
+		Cinema cinema5 = new Cinema("Fitzroy");
+		cinemas.add(cinema5);
 		
 		Movie movie1 = new Movie("Black Panther");
 		movies.add(movie1);
@@ -55,28 +57,38 @@ public class Management
 		cinema1.addMovie(movie1);
 		cinema2.addMovie(movie1);
 		cinema3.addMovie(movie1);
+		cinema4.addMovie(movie1);
+		cinema5.addMovie(movie1);
 		
 		cinema1.addMovie(movie2);
 		cinema2.addMovie(movie2);
 		cinema3.addMovie(movie2);
+		cinema4.addMovie(movie2);
+		cinema5.addMovie(movie2);
 		
 		cinema1.addMovie(movie3);
 		cinema2.addMovie(movie3);
 		cinema3.addMovie(movie3);
+		cinema4.addMovie(movie3);
+		cinema5.addMovie(movie3);
 			
-		cinema1.addSession("s1", "25th February", movie1);
-		cinema2.addSession("s2", "1st March", movie1);
-		cinema3.addSession("s3", "3rd March", movie1);
+		cinema1.addSession("s1", "16:30 25th February", movie1);
+		cinema2.addSession("s2", "18:30 1st March", movie1);
+		cinema3.addSession("s3", "20:30 3rd March", movie1);
+		cinema4.addSession("s4", "22:30 5th March", movie1);
+		cinema5.addSession("s5", "00:30 7th March", movie1);
 		
-		cinema1.addSession("s4", "6th March", movie2);
-		cinema2.addSession("s5", "9th March", movie2);
-		cinema3.addSession("s6", "12th March", movie2);
+		cinema1.addSession("s10", "10:30 6th March", movie2);
+		cinema2.addSession("s20", "12:30 9th March", movie2);
+		cinema3.addSession("s30", "14:30 12th March", movie2);
+		cinema4.addSession("s40", "16:30 14th March", movie2);
+		cinema5.addSession("s50", "18:30 16th March", movie2);
 		
-		cinema1.addSession("s7", "15th March", movie3);
-		cinema2.addSession("s8", "18th March", movie3);
-		cinema3.addSession("s9", "21st March", movie3);
-		
-		
+		cinema1.addSession("s11", "18:30 15th March", movie3);
+		cinema2.addSession("s21", "20:30 18th March", movie3);
+		cinema3.addSession("s31", "22:30 21st March", movie3);
+		cinema4.addSession("s41", "00:30 23rd March", movie3);
+		cinema5.addSession("s51", "02:30 25rd March", movie3);
 		
 		Customer customer = new Customer("c1", "Naomi Scott", "naomi@gmail.com", "Ringwood East");
 		customers.add(customer);
@@ -86,7 +98,11 @@ public class Management
 		
 		Customer customer3 = new Customer("c3", "Jane Fonda", "jane@gmail.com", "Doncaster");
 		customers.add(customer3);
-		//Scanner sb = new Scanner(System.in);
+		
+		cinema1.cinemaSessions.get(0).makeBooking(customer);
+		cinema2.cinemaSessions.get(1).makeBooking(customer2);
+		cinema3.cinemaSessions.get(2).makeBooking(customer3);
+		
 		while(condition)
 		{
 			baseMenu();
@@ -129,10 +145,9 @@ public class Management
 	    		System.out.println("=================================");
 	    		System.out.println("1. Create Booking");
 	    		System.out.println("2. Delete Booking");
-	    		System.out.println("3. Search Movie");
-	    		System.out.println("4. Search Cinema");
-	    		System.out.println("5. Search By Customer Email");
-	    		System.out.println("6. Logout");
+	    		System.out.println("3. Search By Cinema");
+	    		System.out.println("4. Search By Customer Email");
+	    		System.out.println("5. Logout");
 	    		System.out.println("                                ");
 	    		System.out.println("Enter an Option:                ");
 			
@@ -147,26 +162,23 @@ public class Management
 						deleteBooking();
 						break;
 					case 3:
-						searchByMovie();
-						break;
-					case 4:
 						searchByCinema();
 						break;
-					case 5:
+					case 4:
 						searchByCustomer();
 						break;
-					case 6:
+					case 5:
 						Toolkit.getDefaultToolkit().beep();
-						baseMenu();
+						baseMenu();						
 	    		}
 	    		
-	    		if (input != 1 && input != 2 && input != 3 && input != 4 && input != 5 && input != 6) 
+	    		if (input != 1 && input != 2 && input != 3 && input != 4 && input != 5) 
 	    		{
 	    			System.out.println("Please enter a valid number ");
 	    		}
 	    	}
 	    	
-	    	while(input != 6 );
+	    	while(input != 5 );
 			System.out.println("Program Exit");
 	    }
 	    public static void UserLogin()
@@ -183,13 +195,13 @@ public class Management
 			{
 				if ( username.equals(bookingClerks.get(i).getUsername()) && password.equals(bookingClerks.get(i).getPassword()) )
 				{
-					System.out.println("Your username and Your Password are correct.");
-					System.out.println("You have login successfully. ");
+					System.out.println("Your username and password are correct.");
+					System.out.println("You have logged in successfully. ");
 					mainMenu();
 					break;
 				}
 				else
-					System.out.println("Your username and password are incorrect please type it again.");
+					System.out.println("Your username and password are incorrect. Please type it again.");
 				continue;
 			}
 		}
@@ -202,6 +214,10 @@ public class Management
 		int confirmation = 0;
 		sc.nextLine();
 		
+		//Variables
+//				File g  = new File();
+//				g.openFile();
+		
 		cinemaSelected = cinemaSelection();
 		movieSelected = movieSelection(cinemaSelected);
 		sessionSelected = sessionSelection(cinemaSelected, movieSelected);
@@ -213,8 +229,12 @@ public class Management
 		if(confirmation == 1)
 		{
 			sessionSelected.makeBooking(customerSelected);		
-			System.out.println("The following Booking have been created.");
+			System.out.println("Booking has been created.");
 			System.out.println();
+			
+			//writeToFile() and closeFile() method inside if statement
+//			g.writeToFile(cinemaSelected, movieSelected, sessionSelected, customerSelected);
+//			g.closeFile();
 		}
 		else if(confirmation ==2)
 		{
@@ -257,7 +277,7 @@ public class Management
 			if(confirmation == 1)
 			{
 				sessionSelected.deleteBooking(bookingSelect);
-				System.out.println("The Booking have been deleted");
+				System.out.println("The Booking has been deleted");
 			}
 			else if(confirmation == 2)
 			{
@@ -308,7 +328,7 @@ public class Management
 		{
 			if(movieSelected == cinemaSelected.cinemaSessions.get(i).movie)
 			{
-				System.out.println((i) + ". " + cinemaSelected.cinemaSessions.get(i).getDate());
+				System.out.println((i) + ". " + cinemaSelected.cinemaSessions.get(i).getID() + " " + cinemaSelected.cinemaSessions.get(i).getDate());
 			}
 		}
 		sessionSelection = sc.nextInt();
@@ -332,48 +352,50 @@ public class Management
 		
 		return customers.get(customerSelection-1);
 	}
-	
-	private static void searchByMovie()
-	{
-		String movieSearch;
 		
-		Movie movieSearched;
-		System.out.println("Enter movie name");
-		sc.nextLine();
-		movieSearch = sc.nextLine();         
-		
-		for(int i = 0; i < movies.size(); i++)
-		{
-			if(movieSearch == movies.get(i).getName())
-			{
-				System.out.println((i+1) + ". " + movies.get(i).getName());
-				movieSearched = movies.get(i);
-			}
-		}
-		
-		System.out.println("You have choosed " + movieSearch + " to watch today.");
-		System.out.println();
-	}
-	
 	private static void searchByCinema()
 	{
-		String CinemaSearch;
-		Cinema CinemaSearched;
+		//String CinemaSearch;
+		Cinema cinemaSelected;
+		int cinemaSelection;
+		int movieSelection;
+		Movie movieSelected;
 		
-		System.out.println("List the cinema Session");
+		System.out.println("Select a cinema: ");
 		//Cinema.listSessions();
 		
-		CinemaSearch = sc.nextLine();         
+		//CinemaSearch = sc.nextLine();         
 		
-		for(int i = 0; i < cinemaSessions.size(); i++)
+		for(int i = 0; i < cinemas.size(); i++)
 		{
-			
-			
-				System.out.println(cinemaSessions.get(i).getID() + cinemaSessions.get(i).getDate());
+			System.out.println((i) + ". " + cinemas.get(i).getLocation());
+		}
+		cinemaSelection = sc.nextInt();
+		cinemaSelected = cinemas.get(cinemaSelection);
+		
+		
+		System.out.println("Select a movie: ");
+		
+		for(int i = 0; i < cinemaSelected.movies.size(); i ++)
+		{
+			System.out.println((i) + ". " + cinemaSelected.movies.get(i).getName());
 		}
 		
-		System.out.println("You have choosed " + CinemaSearch + " to watch the movie today.");
+		movieSelection = sc.nextInt();
+		movieSelected = cinemaSelected.movies.get(movieSelection);
+		
+		System.out.println("List of sessions: ");
+		int index = 1;
+		for(int i = 0; i < cinemaSelected.cinemaSessions.size(); i++)
+		{
+			if(cinemaSelected.cinemaSessions.get(i).movie == movieSelected)
+			{
+				System.out.println((index++) + ". " + cinemaSelected.cinemaSessions.get(i).getID() + " " + cinemaSelected.cinemaSessions.get(i).getDate());
+			}
+			index++;
+		}
 		System.out.println();
+		
 	}
 	
 	private static void searchByCustomer()

@@ -38,4 +38,14 @@ public class Customer
 	{
 		bookings.add(booking);
 	}
+	public void removeBooking(Booking booking)
+	{
+		for(int i = 0; i < bookings.size(); i++)
+		{
+			if(bookings.get(i) == booking)
+			{
+				bookings.remove(i);
+			}
+		}
+	}
 }

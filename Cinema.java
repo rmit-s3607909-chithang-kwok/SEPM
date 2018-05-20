@@ -4,7 +4,7 @@ public class Cinema
 {
 	private String location;
 	ArrayList<Movie> movies = new ArrayList<Movie>();
-	ArrayList<Session> cinemaSessions = new ArrayList<Session>();
+	public ArrayList<Session> cinemaSessions = new ArrayList<Session>();
 
 	public Cinema(String location) 
 	{

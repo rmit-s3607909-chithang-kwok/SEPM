@@ -2,7 +2,7 @@
 public class Booking{
 	
 	String id;
-	Customer customer;	
+	public Customer customer;	
 	Session session;
 
 	

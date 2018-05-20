@@ -46,7 +46,14 @@ public Movie movie;
 	
 	public void deleteBooking(int selection)
 	{
+		Customer customerOfBooking;
+		
+		customerOfBooking = bookings.get(selection-1).customer;
+		customerOfBooking.removeBooking(bookings.get(selection-1));
+		//Booking bookingToDelete = bookings.remove(selection-1);
+		//customer.removeBooking(bookings.remove(selection-1));
 		bookings.remove(selection-1);
+		
 	}
 	public void listBookings()
 	{
